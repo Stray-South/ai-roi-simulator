@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-roi-simulator"
+version = "0.1.0"
+description = "AI ROI Simulator — People Mode + Engineering Mode"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4"]
+
+[tool.setuptools.packages.find]
+include = ["roi_calc*", "ui*"]
+exclude = ["tests*", "docs*", ".streamlit*"]

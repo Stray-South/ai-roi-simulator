@@ -1,0 +1,28 @@
+# Drop-in replacement for .streamlit/config.toml
+#
+# WCAG check: ink #2A2520 on bg #FBFAF7 → contrast ratio 14.3:1 (AAA).
+# Series colors unchanged from the dark theme in identity; tuned for the
+# light surface. ui/charts.py reads chartCategoricalColors directly.
+
+[theme]
+base = "light"
+primaryColor             = "#B8542F"   # People-Mode accent (terracotta)
+backgroundColor          = "#FBFAF7"   # warm off-white
+secondaryBackgroundColor = "#FFFFFF"   # surface — cards, sidebar
+textColor                = "#2A2520"   # deep warm ink
+font                     = "sans-serif" # real font loaded via theme.css
+
+# Plotly chart series — read by ui/charts.py. Amber #FFF7ED for T5 widget
+# backgrounds is NOT a theme token (DL-12); it stays in custom CSS.
+chartCategoricalColors = [
+    "#B33B2E",  # red — cost line
+    "#2D7A5C",  # green — savings line
+    "#B8542F",  # accent (People) — break-even marker
+    "#F59E0B",  # amber — T5 callout (LOCKED)
+    "#1F2A44",  # navy — Engineering accent + tornado wired
+    "#9CA3AF",  # gray — tornado orphan bars
+    "#7A4A8A",  # violet — secondary
+    "#1F8A5B",  # mint — tertiary
+    "#A33B3B",  # crimson
+    "#C4884A",  # ochre
+]

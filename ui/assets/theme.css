@@ -1,0 +1,454 @@
+/* ============================================================
+   AI ROI Simulator — theme.css · v3
+   Drop-in: ui/assets/theme.css
+
+   v3 changes (on top of v2):
+     * NEW .portfolio-tile / .portfolio-tile__* classes for the 6th-cell
+       portfolio layout (canvas-faithful). Full-width .portfolio-hero kept
+       for compatibility.
+     * Force st.segmented_control active fill + st.tabs underline to follow
+       var(--accent) with higher-specificity selectors — so the People↔
+       Engineering accent swap actually visible-shifts these native widgets.
+     * Tightened default vertical rhythm (stVerticalBlock gap +
+       element-container margin) to match the design canvas spacing.
+
+   v2 changes (carried forward):
+     * Removed body[data-mode="Engineering"] selector — accent swap is
+       emitted as a Python-side <style> override from ui/theme.py.
+     * Added !important to typography so Streamlit's own styles don't win.
+     * Fixed expander targeting — the WHOLE [data-testid="stExpander"] is
+       the bordered surface; both summary and details get internal padding.
+     * Removed st.radio mode-toggle selectors — patch uses st.segmented_control.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Type */
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --font-sans:  "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Surface */
+  --bg:        #FBFAF7;
+  --surface:   #FFFFFF;
+  --rule:      #E8E2D7;
+  --rule-soft: #F1ECE3;
+
+  /* Ink */
+  --ink:       #2A2520;
+  --ink-soft:  #5C534A;
+  --muted:     #8A8278;
+
+  /* Default People-Mode accent (Engineering override comes from ui/theme.py) */
+  --accent:        #B8542F;
+  --accent-soft:   #F4E5DC;
+
+  /* Series */
+  --green:     #2D7A5C;
+  --green-soft:#E6F0EA;
+  --red:       #B33B2E;
+  --red-soft:  #F4E3DF;
+
+  /* Calibrated amber (LOCKED — do not change) */
+  --amber:     #F59E0B;
+  --amber-bg:  #FFF7ED;
+  --amber-ink: #7A4A0F;
+}
+
+/* ---------- Page chrome ---------- */
+html, body, .stApp {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stApp > header { background: transparent !important; }
+.block-container {
+  max-width: 1240px !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Tighten the default per-element vertical rhythm to match the canvas. */
+.stApp [data-testid="stVerticalBlock"] { gap: 0.75rem !important; }
+.stApp [data-testid="element-container"] { margin-bottom: 0 !important; }
+
+#MainMenu, footer, .stDeployButton { display: none !important; }
+
+/* ---------- Type — HIGH specificity so Streamlit's own rules don't win ---------- */
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp [data-testid="stHeading"] h1,
+.stApp [data-testid="stHeading"] h2,
+.stApp [data-testid="stHeading"] h3,
+.stApp [data-testid="stMarkdownContainer"] h1,
+.stApp [data-testid="stMarkdownContainer"] h2,
+.stApp [data-testid="stMarkdownContainer"] h3 {
+  font-family: var(--font-serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.4px;
+  color: var(--ink) !important;
+}
+.stApp h1 { font-size: 32px !important; line-height: 1.15 !important; }
+.stApp h2 { font-size: 24px !important; line-height: 1.2  !important; }
+.stApp h3 { font-size: 18px !important; }
+
+.stApp p,
+.stApp li,
+.stApp label,
+.stApp [data-testid="stMarkdownContainer"] p {
+  font-family: var(--font-sans) !important;
+}
+.stApp em { color: var(--ink-soft); font-style: italic; }
+
+.stApp code,
+.stApp pre,
+.stApp [data-testid="stMarkdownContainer"] code {
+  font-family: var(--font-mono) !important;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--ink);
+  font-size: 0.92em;
+}
+.stApp pre { padding: 12px 14px; }
+
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Mode toggle: st.segmented_control ----------
+   Streamlit ≥ 1.39's segmented control reads `primaryColor` from
+   config.toml at boot, so the active fill is statically terracotta. Force
+   it to follow var(--accent) here so the People ↔ Engineering swap shows.
+   The button selector intentionally uses a high-specificity chain that
+   beats Streamlit's own [kind="primary"] internals. */
+/* Streamlit 1.57's segmented_control DOM uses kind="segmented_controlActive"
+   on the selected button (no aria-pressed / aria-checked / data-selected).
+   The active button's background is rgba(primaryColor, 0.2) by default —
+   we override to a solid var(--accent) fill so the People↔Engineering
+   accent swap actually visible-shifts the pill. */
+button[data-testid="stBaseButton-segmented_control"],
+button[data-testid="stBaseButton-segmented_controlActive"] {
+  font-family: var(--font-sans) !important;
+  border-radius: 4px !important;
+}
+button[data-testid="stBaseButton-segmented_controlActive"],
+button[kind="segmented_controlActive"] {
+  background: var(--accent) !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #FFFFFF !important;
+}
+button[data-testid="stBaseButton-segmented_controlActive"] *,
+button[kind="segmented_controlActive"] * {
+  color: #FFFFFF !important;
+}
+
+/* ---------- Tabs ---------- */
+.stTabs [data-baseweb="tab-list"] {
+  gap: 0; border-bottom: 1px solid var(--rule);
+}
+.stTabs [data-baseweb="tab"] {
+  padding: 12px 18px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 13.5px !important;
+  color: var(--muted) !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+}
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+  color: var(--ink) !important;
+  font-weight: 600 !important;
+  border-bottom-color: var(--accent) !important;
+}
+/* Streamlit paints a separate highlight bar inside the tab list — retint. */
+.stTabs [data-baseweb="tab-highlight"],
+.stTabs [data-baseweb="tab-border"] {
+  background-color: var(--accent) !important;
+}
+
+/* ---------- Buttons ---------- */
+.stButton > button {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  padding: 10px 22px !important;
+}
+.stButton > button[kind="primary"] {
+  background: var(--accent) !important;
+  border: 0 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 24px -8px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+.stButton > button[kind="primary"]:hover { filter: brightness(0.96); }
+.stButton > button[kind="secondary"] {
+  background: transparent !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--ink-soft) !important;
+}
+
+/* ---------- Inputs ---------- */
+.stNumberInput input,
+.stTextInput input,
+.stSelectbox > div > div {
+  font-family: var(--font-mono) !important;
+  font-variant-numeric: tabular-nums;
+  background: var(--surface) !important;
+  border-radius: 3px !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--ink) !important;
+}
+.stSlider [data-baseweb="slider"] [role="slider"] {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.stRadio label { font-family: var(--font-sans) !important; }
+
+/* ---------- Expanders → "cards" — WHOLE testid is the bordered surface ---------- */
+[data-testid="stExpander"] {
+  background: var(--surface) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 6px !important;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+[data-testid="stExpander"] > details > summary,
+[data-testid="stExpander"] summary {
+  padding: 14px 18px !important;
+  font-family: var(--font-serif) !important;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+[data-testid="stExpander"] details[open] > summary {
+  border-bottom: 1px solid var(--rule-soft);
+}
+[data-testid="stExpander"] [data-testid="stExpanderDetails"],
+[data-testid="stExpander"] details[open] > div:not(summary) {
+  padding: 14px 18px 18px !important;
+}
+
+/* ---------- Calibrated amber row + pill (LOCKED behavior) ---------- */
+.calibrated-row {
+  background: var(--amber-bg);
+  border-left: 3px solid var(--amber);
+  padding: 10px 14px;
+  margin: 6px 0;
+}
+.amber-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--amber-bg); color: var(--amber-ink);
+  border: 1px solid var(--amber);
+  padding: 2px 7px; border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 500; letter-spacing: 0.5px;
+}
+
+/* ---------- Tile (savings/risk/portfolio) ---------- */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 20px 22px 18px;
+  position: relative;
+  display: flex; flex-direction: column; gap: 10px;
+  height: 100%;
+}
+.tile::before {
+  content: ""; position: absolute; left: 0; top: 18px; bottom: 18px;
+  width: 3px; border-radius: 0 2px 2px 0; background: var(--muted);
+}
+.tile--savings::before { background: var(--green); }
+.tile--risk::before    { background: var(--red); }
+.tile__label {
+  font-family: var(--font-sans); font-size: 13px;
+  color: var(--ink-soft); font-weight: 500;
+}
+.tile__value {
+  font-family: var(--font-serif);
+  font-size: 30px; font-weight: 500;
+  letter-spacing: -0.6px;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+  line-height: 1;
+}
+.tile--savings .tile__value { color: var(--green); }
+.tile--risk    .tile__value { color: var(--red); }
+.tile__detail, .tile__citation {
+  font-family: var(--font-mono);
+  font-size: 10.5px; color: var(--muted);
+  letter-spacing: 0.2px; line-height: 1.5;
+}
+.tile__footer {
+  border-top: 1px dashed var(--rule);
+  padding-top: 8px; margin-top: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Portfolio tile (6th-cell variant — sits alongside the 5 calc tiles) ---------- */
+.portfolio-tile {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  border-radius: 6px;
+  padding: 20px 22px 18px;
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+  height: 100%;
+}
+.portfolio-tile::before {
+  content: ""; position: absolute; left: 0; top: 18px; bottom: 18px;
+  width: 3px; border-radius: 0 2px 2px 0; background: var(--accent);
+}
+.portfolio-tile__label {
+  font-family: var(--font-sans); font-size: 13px;
+  color: var(--ink-soft); font-weight: 500;
+}
+.portfolio-tile__value {
+  font-family: var(--font-serif);
+  font-size: 34px; font-weight: 500;
+  letter-spacing: -0.8px;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  margin-top: 2px;
+  line-height: 1;
+}
+.portfolio-tile__breakdown {
+  border-top: 1px dashed var(--rule);
+  padding-top: 8px; margin-top: auto;
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--muted); line-height: 1.6;
+}
+.portfolio-tile__breakdown b { font-weight: 500; color: var(--ink); }
+
+/* ---------- Portfolio HERO (full-width above grid) — kept for compatibility ---------- */
+.portfolio-hero {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  border-radius: 6px;
+  padding: 32px;
+  margin: 18px 0 22px;
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center;
+}
+.portfolio-hero .eyebrow {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted);
+}
+.portfolio-hero .big {
+  font-family: var(--font-serif);
+  font-size: 64px; font-weight: 500;
+  line-height: 1; letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
+  margin-top: 10px;
+  color: var(--accent);
+}
+.portfolio-hero .breakdown {
+  border-left: 1px solid var(--rule);
+  padding-left: 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* ---------- Tier badges + section eyebrows ---------- */
+.tier {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10px;
+  padding: 1px 5px; border-radius: 2px; letter-spacing: 0.5px;
+}
+.tier--T1 { background: #E8F0EA; color: #1F5A38; }
+.tier--T2 { background: #EFF2F7; color: #2A3B58; }
+.tier--T5 { background: var(--amber-bg); color: var(--amber-ink); }
+
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+}
+
+/* ---------- Reader anchor (v7 — "What you're looking at" 5-beat callout) ---------- */
+/* Sits between the lede and the mode toggle. AuDHD-friendly: five bolded
+   inline labels (What you're looking at / The investment / The before/after /
+   The number / What's amber-flagged) act as a scan-path for someone who won't
+   read every word. Tokens reuse var(--accent) / var(--accent-soft) so the
+   People↔Engineering accent swap also tints this. */
+.reader-anchor {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 20px 8px;
+  margin: 14px 0 18px;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 920px;
+}
+.reader-anchor p {
+  margin: 0 0 10px;
+  font-family: var(--font-serif) !important;
+}
+.reader-anchor p:last-child { margin-bottom: 0; }
+.reader-anchor strong {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--accent);
+  margin-right: 4px;
+  letter-spacing: 0.1px;
+}
+.reader-anchor em {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ---------- App header (used by streamlit_app.py main()) ---------- */
+.app-header {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px; padding: 8px 0 18px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 12px;
+}
+.app-header__brand { display: flex; align-items: center; gap: 14px; }
+.app-header__mark {
+  width: 36px; height: 36px; border-radius: 4px;
+  background: var(--ink); color: var(--bg);
+  display: grid; place-items: center;
+  font-family: var(--font-serif); font-size: 18px; font-weight: 500;
+  flex-shrink: 0;
+}
+.app-header__meta {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--muted); text-align: right; line-height: 1.7;
+  flex-shrink: 0;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  border-top: 1px solid var(--rule);
+  background: var(--rule-soft);
+  padding: 26px 32px 32px;
+  margin-top: 32px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  border-radius: 6px 6px 0 0;
+}
+.app-footer strong { color: var(--ink); font-style: normal; font-weight: 600; }
+
+/* ---------- Plotly container — light surface ---------- */
+[data-testid="stPlotlyChart"] {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+/* ---------- WCAG: visible focus ring ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px;
+}
