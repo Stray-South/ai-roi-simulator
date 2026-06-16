@@ -3,7 +3,7 @@
 All shapes are ``frozen=True`` so mode-toggle session-state invalidation
 (DL-22 / Cascade 8) doesn't have to defensively copy.
 
-Cascade-locked decisions (see ``docs/DECISION_LOG.md``):
+Pinned decisions (see inline DL-XX comments below):
   * DL-7  — ``PortfolioResult`` and ``BreakEvenResult`` are frozen dataclasses
             (spec §5.6 used a dict; switched to typed shape for composability)
   * DL-17 — ``PeopleInputs`` has **no** ``discount_rate_annual`` field

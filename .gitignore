@@ -22,6 +22,10 @@ htmlcov/
 # Streamlit
 .streamlit/secrets.toml
 
+# Secrets / env
+.env
+.env.*
+
 # macOS
 .DS_Store
 

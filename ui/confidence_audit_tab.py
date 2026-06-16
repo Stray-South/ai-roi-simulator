@@ -73,5 +73,5 @@ def render() -> None:
         "US AI Pulse Survey, and press releases failed to confirm the figure. "
         "Per the project's verification policy *'if we can't verify, we don't include it'*, the anchor "
         "is removed entirely from v4.2. `training_spend_ppt` remains as a "
-        "decorative slider per Option D."
+        "decorative slider — Day-90 calibration."
     )

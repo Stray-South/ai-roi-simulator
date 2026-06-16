@@ -86,7 +86,7 @@ Deploys to [Streamlit Community Cloud](https://share.streamlit.io) (free).
 - Streamlit 1.57+ (UI, segmented_control)
 - pandas 2.2 / numpy 1.26 (engine math)
 - plotly 6.7 (break-even chart + tornado)
-- pytest 8.3 (393 tests, all pinned values byte-identical)
+- pytest 8.3 (393+ tests, pinned values byte-identical)
 
 Single-file install via `requirements.txt`. No database, no secrets, no
 external services beyond Google Fonts (Source Serif 4, IBM Plex Sans,

@@ -3,7 +3,7 @@
 Implements v4.2 spec §5.1–5.7 (hard-dollar calcs + verification tax + portfolio)
 and §6.1 (break-even chart). Pure Python; zero Streamlit imports.
 
-Cascade-locked decisions (see ``docs/DECISION_LOG.md``):
+Pinned decisions (see inline DL-XX comments below):
   * DL-1  — ``candidate_pipeline_risk`` uses ``PIPELINE_PER_REQ = 5`` (spec
             patch from 50; at 50 portfolio nets to −$6.3M)
   * DL-3  — ``cumulative_cost_vs_savings`` pulls ``RAMP_FLOOR``,

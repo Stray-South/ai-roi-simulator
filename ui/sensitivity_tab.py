@@ -20,7 +20,7 @@ def render(mode: Literal["People", "Engineering"]) -> None:
     st.markdown(
         "Each bar shows the swing in the portfolio's headline output when one "
         "input is varied ±20% (floats) or ±1 (1–5 scale ints). "
-        "**Gray bars are orphan inputs** under Option D / DL-14 — they're "
+        "**Gray bars are orphan inputs** (decorative; calibrated at Day 90) — they're "
         "wired into the UI but have no engine effect in v1. Day-90 calibration "
         "with org-measured baselines is the deliverable that activates them."
     )

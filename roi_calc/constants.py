@@ -4,7 +4,7 @@ Every numeric anchor and calibrated parameter lives here as a frozen ``Citation`
 so the Confidence Audit tab (Phase 9) can iterate ``CITATIONS`` and render
 source / tier / amber-flag without name-lookup.
 
-Cascade-locked decisions (see ``docs/DECISION_LOG.md``):
+Pinned decisions (see inline DL-XX comments below):
   * DL-1  — ``PIPELINE_PER_REQ = 5`` (spec patch from 50)
   * DL-3  — ``RAMP_FLOOR``, ``IMPLEMENTATION_SETUP_PER_EMPLOYEE``,
             ``IMPLEMENTATION_RECURRING_PER_EMPLOYEE_PER_YEAR`` lifted from §6.1

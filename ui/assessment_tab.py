@@ -33,7 +33,7 @@ def render() -> None:
     st.header("Engineering Mode — Assessment Radar")
     st.markdown(
         "7 DORA AI capabilities, scored 1–5. **user_centric_focus** is the "
-        "DL-13 gate: scores ≤ 2 zero out AI value per DORA 2025's headline "
+        "DORA 2025 finding: scores ≤ 2 zero out AI value per DORA 2025's headline "
         "finding."
     )
 
@@ -45,7 +45,7 @@ def render() -> None:
     ]
     gate_active = user_centric_gate_active(inputs.user_centric_focus)
 
-    # DL-13: paint user_centric_focus marker red when gate triggers, purple otherwise
+    # Paint user_centric_focus marker red when gate triggers, purple otherwise
     UCF_INDEX = 5  # _CAPABILITY_FIELDS.index("user_centric_focus")
     marker_colors = ["#907AFF"] * len(scores)
     if gate_active:
@@ -76,7 +76,7 @@ def render() -> None:
     if gate_active:
         st.error(
             f"⚠️ user_centric_focus = {inputs.user_centric_focus} ≤ 2 — "
-            "DL-13 gate ACTIVE. Per DORA 2025, AI adoption in this team "
+            "DORA 2025 gate ACTIVE. Per DORA 2025, AI adoption in this team "
             "produces NEGATIVE value until user-centric focus rises above 2. "
             "User-centric-focus marker is painted **red** on the radar above."
         )

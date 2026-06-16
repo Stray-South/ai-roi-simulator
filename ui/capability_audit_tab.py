@@ -13,7 +13,7 @@ from roi_calc.constants import MANAGER_MULTIPLIER_MAX
 
 
 def render() -> None:
-    st.header("Capability Audit (Option D)")
+    st.header("Capability Audit (decorative multipliers)")
     st.markdown(
         "v1 ships **decorative multipliers** (training spend, manager support both 1.0×). "
         "Day 90 calibrates them against org-measured baselines. This tab surfaces what "

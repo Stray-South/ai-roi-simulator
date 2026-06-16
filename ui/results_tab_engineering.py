@@ -78,29 +78,35 @@ def render() -> None:
         else:
             st.success(
                 f"User-centric focus score = {inputs.user_centric_focus} > 2. "
-                "DL-13 gate not triggered; AI value flows through."
+                "User-centric focus above threshold; AI value flows through."
             )
 
     st.markdown("---")
 
     st.subheader("Archetype-adjusted portfolio")
     st.info(
-        f"📍 **{result.archetype_adjusted_status}**\n\n"
-        f"Archetype: *{inputs.archetype}*. The 7 DORA archetype multipliers "
-        "(Foundational Challenges → Harmonious High-Achievers) require v3 spec "
-        "on disk. v1 ships the wrapper API; v2 calibrates."
+        f"📍 **{result.archetype_adjusted_status}** — *deliberate Day-90 "
+        f"deliverable, not a half-built feature.*\n\n"
+        f"Selected archetype: *{inputs.archetype}*. The 7 DORA archetype "
+        "multipliers (Foundational Challenges → Harmonious High-Achievers) "
+        "calibrate against your organization's measured baselines at Day 90 "
+        "of an engagement. This template ships the structural API; the "
+        "calibration math is the deliverable a real engagement produces."
     )
 
     st.subheader("Capability-adjusted portfolio")
     st.info(
-        f"📍 **{result.capability_adjusted_status}**\n\n"
-        "The 7 DORA capability weights are v3-pending. Default 1-5 scores "
-        "display on the Assessment radar tab; dollar values that depend on the "
-        "weights do NOT display until v3 is on disk."
+        f"📍 **{result.capability_adjusted_status}** — *deliberate Day-90 "
+        f"deliverable, not a half-built feature.*\n\n"
+        "The 7 DORA capability weights calibrate at Day 90 against your "
+        "organization's measured baselines. Default 1-5 scores display on "
+        "the Assessment radar tab; multiplier-derived dollar values do NOT "
+        "display until calibration is complete — surfacing un-calibrated "
+        "numbers would be dishonest."
     )
 
     st.markdown("---")
-    st.subheader("Engineering Mode J-Curve (v3 §5.1 productivity formula)")
+    st.subheader("Engineering Mode J-Curve")
     try:
         annual_net = engineering_annual_value(inputs)
         st.metric(
@@ -122,7 +128,7 @@ def render() -> None:
             "under their default assumptions as the Engineering-Mode "
             "credibility check; the real figure comes from your organization's own incident "
             "data — that's the Day-90 deliverable. Archetype + capability "
-            "multipliers fixed to 1.0× (Option B / DL-14) — Day-90 calibration "
+            "multipliers fixed to 1.0× (decorative in this template — Day-90 calibration "
             "with org-measured baselines replaces."
         )
     except ValueError as e:

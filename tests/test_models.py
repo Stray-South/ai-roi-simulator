@@ -4,7 +4,7 @@ Cascade regressions guarded here:
   * DL-7  — PortfolioResult / BreakEvenResult are frozen dataclasses
   * DL-17 — PeopleInputs has no ``discount_rate_annual`` field
   * DL-19 — pipeline_scenario default is "Conservative"
-  * DL-23 — PeopleInputs defaults to SAMPLE_ORG_EMPLOYEES=1151 (not consolidated 1235)
+  * DL-23 — PeopleInputs defaults to the operating-subsidiary headcount, not consolidated
   * Gate 10 — PortfolioResult has no ``compensation_multiple`` field
 """
 
@@ -54,7 +54,7 @@ def test_people_inputs_is_frozen() -> None:
 
 
 def test_people_inputs_sample_defaults_organization() -> None:
-    """Sample defaults: subsidiary headcount (1151) drives the engine, not consolidated (1235)."""
+    """Sample defaults: the operating-subsidiary headcount drives the engine, not the consolidated headcount."""
     inp = PeopleInputs()
     assert inp.employees == 1_151
     assert inp.annual_hires == 230

@@ -22,7 +22,7 @@ _BRIDGE_TABLE_MARKDOWN = """
 | **J-Curve (productivity dip)** | Tuition cost of transformation | Investment-phase region on the break-even chart |
 | **Instability Tax** *(industry-common label for DORA's CFR delta × deploys × incident cost; distinct from row below)* | Cost-per-incident × CFR delta | Decision-point compliance risk delta (§5.5) |
 | **Verification Tax** *(Workday/Hanover 37%; distinct from row above — different measured population, different work type)* | % of gross savings absorbed by re-work | Workday/Hanover 37% universal net-down |
-| **7 AI Capabilities** | Org-readiness gates that amplify or attenuate AI ROI | Manager support (Gallup, decorative under Option D); training spend (decorative, no source-verified coefficient) |
+| **7 AI Capabilities** | Org-readiness gates that amplify or attenuate AI ROI | Manager support (Gallup, decorative — Day-90 calibration); training spend (decorative, no source-verified coefficient) |
 | **7 Team Archetypes** | Operating-model maturity bands | Not yet mapped to People — flagged as v2 work |
 | **METR Self-Report Discount** | Honest correction for self-reported gains | Not yet HR-published — flagged as calibrated |
 """

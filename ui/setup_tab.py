@@ -136,7 +136,7 @@ def _render_people_setup() -> None:
             key="people_dp_error_cost",
         )
 
-    with st.expander("Capability multipliers (decorative under Option D)", expanded=True):
+    with st.expander("Capability multipliers (decorative — calibrated at Day 90)", expanded=True):
         st.caption(
             "These sliders are shown for context; they have no effect on the "
             "headline numbers yet. Day 90 of the implementation plan calibrates "
@@ -231,10 +231,10 @@ def _render_engineering_setup() -> None:
     inputs: EngineeringInputs = st.session_state["engineering_inputs"]
 
     st.markdown(
-        "DORA framework — instability tax + J-Curve. **Option B (DL-14):** "
+        "DORA framework — instability tax + J-Curve. In this template: "
         "instability tax + J-Curve render real values; archetype and capability "
         "multiplier-derived dollar values render as *v3-calibration pending* "
-        "annotations until v3 spec is on disk."
+        "annotations until Day-90 calibration."
     )
 
     with st.expander("DORA J-Curve + instability tax", expanded=True):
@@ -290,14 +290,14 @@ def _render_engineering_setup() -> None:
             key="eng_self_report",
         )
 
-    with st.expander("7 DORA capability scores (1–5; decorative under Option B)", expanded=True):
+    with st.expander("7 DORA capability scores (1–5; decorative — Day-90)", expanded=True):
         st.caption("Multipliers v3-pending; sliders display but don't drive dollar output in v1.")
         clear_ai = st.slider("Clear AI stance", 1, 5, int(inputs.clear_ai_stance), key="eng_clear_ai")
         healthy_data = st.slider("Healthy data ecosystem", 1, 5, int(inputs.healthy_data_ecosystem), key="eng_healthy_data")
         ai_data = st.slider("AI-accessible data", 1, 5, int(inputs.ai_accessible_data), key="eng_ai_data")
         version = st.slider("Version control", 1, 5, int(inputs.version_control), key="eng_version")
         batches = st.slider("Small batches", 1, 5, int(inputs.small_batches), key="eng_batches")
-        ucf = st.slider("User-centric focus (≤2 triggers DL-13 gate)", 1, 5, int(inputs.user_centric_focus), key="eng_ucf")
+        ucf = st.slider("User-centric focus (≤2 zeroes AI value per DORA 2025)", 1, 5, int(inputs.user_centric_focus), key="eng_ucf")
         quality = st.slider("Quality platform", 1, 5, int(inputs.quality_platform), key="eng_quality")
 
     archetype_options = (

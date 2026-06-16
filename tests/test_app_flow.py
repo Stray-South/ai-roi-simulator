@@ -215,10 +215,10 @@ def test_gate11_mobley_kistler_footnote_present_on_results() -> None:
 
 
 def test_gate12_bridge_appendix_table_v4_2_row_8_present() -> None:
-    """Gate 12: Bridge Appendix renders v4.2 row 8 (Option D + no source-verified coefficient)."""
+    """Gate 12: Bridge Appendix renders row 8 (decorative calibration + no source-verified coefficient)."""
     at = _boot()
     md = _all_markdown(at)
-    assert "Option D" in md
+    assert "decorative — Day-90 calibration" in md
     assert "no source-verified coefficient" in md
     # And NOT the v4.1 EY-flavored text
     assert "v1 reduced set" not in md
@@ -479,7 +479,7 @@ def test_gate12_bridge_appendix_renders_in_engineering_mode() -> None:
     # Bridge Appendix header (rendered via st.header)
     assert "DORA → CFO Transform" in md
     # v4.2 row 8 markers
-    assert "Option D" in md
+    assert "decorative — Day-90 calibration" in md
     assert "no source-verified coefficient" in md
 
 

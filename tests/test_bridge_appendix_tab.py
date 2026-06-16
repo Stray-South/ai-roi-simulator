@@ -27,9 +27,9 @@ def test_bridge_appendix_contains_all_10_metric_rows() -> None:
 
 def test_bridge_appendix_row_8_uses_v4_2_text_not_v4_1() -> None:
     """v4.1 said 'Training spend (EY) + manager support (Gallup) as v1 reduced set'.
-    v4.2 says 'Manager support (Gallup, decorative under Option D); training spend
+    Sanitized v1: "Manager support (Gallup, decorative — Day-90 calibration); training spend
     (decorative, no source-verified coefficient)'. Regression guard."""
-    assert "Option D" in _BRIDGE_TABLE_MARKDOWN
+    assert "decorative — Day-90 calibration" in _BRIDGE_TABLE_MARKDOWN
     assert "no source-verified coefficient" in _BRIDGE_TABLE_MARKDOWN
     assert "v1 reduced set" not in _BRIDGE_TABLE_MARKDOWN
 
