@@ -60,7 +60,7 @@ def test_decision_point_risk_delta_pinned() -> None:
     assert decision_point_risk_delta(PeopleInputs()) == pytest.approx(69_000, abs=10)
 
 
-def test_people_mode_portfolio_pinned_at_prog_defaults() -> None:
+def test_people_mode_portfolio_pinned_at_sample_defaults() -> None:
     """End-to-end reconciliation: gross $1,297,053 − risk $824,550 = net $472,503."""
     result = people_mode_portfolio(PeopleInputs())
     assert isinstance(result, PortfolioResult)

@@ -16,7 +16,7 @@ CONFIDENCE_AUDIT_PATH = Path(__file__).parent.parent / "ui" / "confidence_audit_
 
 def test_capability_audit_ey_appears_only_in_removal_explanation() -> None:
     """When the capability_audit_tab mentions 'EY', the surrounding context must
-    explain the removal (per Logan's 'if we can't verify, we don't include it')."""
+    explain the removal (per the project's verification policy)."""
     src = CAPABILITY_AUDIT_PATH.read_text()
     # Every "EY" occurrence must be in proximity to "failed", "removed", or "verify"
     if "EY" in src:

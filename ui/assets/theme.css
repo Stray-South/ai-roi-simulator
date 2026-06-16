@@ -369,7 +369,7 @@ button[kind="segmented_controlActive"] * {
 }
 
 /* ---------- Reader anchor (v7 — "What you're looking at" 5-beat callout) ---------- */
-/* Sits between the lede and the mode toggle. AuDHD-friendly: five bolded
+/* Sits between the lede and the mode toggle. Plain-language scan-path: five bolded
    inline labels (What you're looking at / The investment / The before/after /
    The number / What's amber-flagged) act as a scan-path for someone who won't
    read every word. Tokens reuse var(--accent) / var(--accent-soft) so the

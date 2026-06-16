@@ -27,7 +27,7 @@ def render() -> None:
             "**Status:** decorative wrapper (1.0×)\n\n"
             "**Why:** the EY '+5.9 ppt per ppt training spend' anchor failed "
             "independent source verification across Work Reimagined Survey 2024/2025, "
-            "EY US AI Pulse Survey, and press releases. Per Logan's rule "
+            "EY US AI Pulse Survey, and press releases. Per the project's verification policy "
             "*'if we can't verify, we don't include it'*, the constant is absent "
             "from `constants.py`. The slider remains for v2 calibration."
         )

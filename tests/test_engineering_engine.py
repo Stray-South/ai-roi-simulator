@@ -313,7 +313,7 @@ def test_gate10_engineering_portfolio_result_no_compensation_fields() -> None:
 # Stream B2 — engineering_annual_value (v3 §5.1 productivity formula, DL-29)
 # ---------------------------------------------------------------------------
 
-def test_engineering_annual_value_pinned_at_prog_defaults() -> None:
+def test_engineering_annual_value_pinned_at_sample_defaults() -> None:
     """Pinned regression: at sample defaults the v3 §5.1 productivity formula
     plus instability tax subtracts to ~$199,682. Formula:
       raw_gain = 0.30×0.375 + 0.70×0.10 = 0.1825
@@ -328,7 +328,7 @@ def test_engineering_annual_value_pinned_at_prog_defaults() -> None:
     assert result == pytest.approx(199_682, abs=500)
 
 
-def test_engineering_annual_value_plausible_range_at_prog_defaults() -> None:
+def test_engineering_annual_value_plausible_range_at_sample_defaults() -> None:
     """Sanity bound: net annual value sits inside a plausibly defensible band.
     Upper bound derivation: v3 §5.1 publishes $400K–$1.5M for **gross**;
     net = gross − $344K instability tax → net ceiling ≈ $1.156M. We round
@@ -472,7 +472,7 @@ def test_engineering_break_even_returns_break_even_result() -> None:
     assert len(result.cumulative_savings) == 24
 
 
-def test_engineering_break_even_breakeven_within_horizon_at_prog_defaults() -> None:
+def test_engineering_break_even_breakeven_within_horizon_at_sample_defaults() -> None:
     """At v3 §5.1 defaults Engineering Mode reaches breakeven inside the 24-month horizon."""
     result = engineering_cumulative_cost_vs_savings(EngineeringInputs())
     assert result.breakeven_month is not None
@@ -504,7 +504,7 @@ def test_engineering_break_even_savings_derive_from_annual_value() -> None:
     assert m13_delta == pytest.approx(monthly_net, abs=1e-3)
 
 
-def test_engineering_break_even_pinned_at_prog_defaults() -> None:
+def test_engineering_break_even_pinned_at_sample_defaults() -> None:
     """Pinned regression for the integrated Engineering J-Curve:
       annual_net ≈ $199,682
       one-time setup = 300 × $50 = $15,000

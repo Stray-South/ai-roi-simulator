@@ -20,7 +20,7 @@ from roi_calc.people_engine import (
 # Pinned: M8 breakeven at sample defaults; +$566,394 at M24 (handoff figures)
 # ---------------------------------------------------------------------------
 
-def test_break_even_month_at_prog_defaults_is_8() -> None:
+def test_break_even_month_at_sample_defaults_is_8() -> None:
     """At sample defaults (1151 emp / $472,503 annual net / $50+$30 implementation /
     ramp 0/0.058...0.35 over 6 mo / 0.35..1.0 over 6 mo / 1.0 thereafter):
     cumulative savings ($88,594) first exceeds cumulative cost ($80,570) in month 8.
@@ -227,7 +227,7 @@ def test_break_even_result_is_immutable_after_engine() -> None:
 # DL-28 — shared-core extraction byte-identical regression
 # ---------------------------------------------------------------------------
 
-def test_dl28_shared_core_byte_identical_at_prog_defaults() -> None:
+def test_dl28_shared_core_byte_identical_at_sample_defaults() -> None:
     """DL-28: `_build_break_even_series` was extracted from
     `cumulative_cost_vs_savings` so Engineering Mode (Stream B) can share the
     same J-Curve math. The refactor must be byte-identical for People Mode:

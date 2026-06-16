@@ -69,7 +69,7 @@ def main() -> None:
         "90-day plan replaces every amber flag with org-measured baselines.*"
     )
 
-    # Reader-anchor with 5-beat structure (AuDHD-friendly scan-path).
+    # Reader-anchor with 5-beat structure.
     # Five bolded inline labels: What you're looking at / The investment /
     # The before/after / The number / What's amber-flagged.
     # Purely descriptive — no rhetorical framing.

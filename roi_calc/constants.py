@@ -296,10 +296,10 @@ SAMPLE_ANNUAL_HIRES = Citation(
 )
 SAMPLE_LOADED_COST_PER_FTE = Citation(
     value=124_615,
-    source="Sample default — derived as $153.9M personnel cost line ÷ 1,235 "
-           "consolidated employees (representative of a mid-market regulated "
-           "lender's 10-K). Replace with your organization's personnel cost ÷ "
-           "consolidated headcount.",
+    source="Sample default — representative loaded cost per FTE for a "
+           "mid-market regulated consumer-finance lender (derived from a "
+           "personnel cost line ÷ consolidated headcount). Replace with "
+           "your organization's personnel cost ÷ consolidated headcount.",
     tier="T1",
 )
 

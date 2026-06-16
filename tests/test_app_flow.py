@@ -103,8 +103,8 @@ def test_app_setup_employees_persists_to_session_state() -> None:
     """Setup tab widgets write to session_state on rerun (Streamlit native)."""
     at = _boot()
     # Locate the employees number_input by key
-    pl_input = next(ni for ni in at.number_input if ni.key == "people_employees")
-    pl_input.set_value(1500)
+    emp_input = next(ni for ni in at.number_input if ni.key == "people_employees")
+    emp_input.set_value(1500)
     at.run()
     assert at.session_state["people_inputs"].employees == 1500
 

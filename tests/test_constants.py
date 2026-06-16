@@ -184,8 +184,8 @@ def test_dropout_values_monotonic() -> None:
     )
 
 
-def test_dl23_prog_both_employee_constants_present() -> None:
-    """DL-23: scope clarity — both subsidiary (PL) and consolidated headcounts."""
+def test_dl23_both_employee_constants_present() -> None:
+    """DL-23: scope clarity — both subsidiary (operating-subsidiary) and consolidated headcounts."""
     assert constants.SAMPLE_ORG_EMPLOYEES.value == 1_151
     assert constants.SAMPLE_ORG_CONSOLIDATED_HEADCOUNT.value == 1_235
     assert constants.SAMPLE_ORG_EMPLOYEES.tier == "T1"

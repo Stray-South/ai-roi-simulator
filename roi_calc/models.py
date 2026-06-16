@@ -137,7 +137,7 @@ class EngineeringInputs:
     """
 
     # DORA J-Curve + instability tax
-    engineers: int = 300  # T5 calibrated, Synchrony peer benchmark
+    engineers: int = 300  # T5 calibrated, industry peer benchmark
     cfr_before: float = 0.05  # T2 DORA 2026 sample
     cfr_after: float = 0.06  # T2 DORA 2026 sample
     deploys_per_year: int = DEPLOYS_PER_YEAR_DORA.value  # T5 (DL-9)

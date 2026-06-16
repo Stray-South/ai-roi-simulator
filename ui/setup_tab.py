@@ -244,7 +244,7 @@ def _render_engineering_setup() -> None:
             value=int(inputs.engineers),
             step=10,
             key="eng_engineers",
-            help="T5 calibrated — most regulated lenders don't disclose engineering headcount; Synchrony peer scaling gives 230-345 band.",
+            help="T5 calibrated — most regulated lenders don't disclose engineering headcount; industry peer scaling gives 230-345 band.",
         )
         cfr_before = st.number_input(
             "CFR before AI",

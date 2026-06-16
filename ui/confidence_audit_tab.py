@@ -71,7 +71,7 @@ def render() -> None:
         "v4.1 listed an EY '+5.9 ppt per ppt training spend' coefficient as T1. "
         "Independent source verification across EY's Work Reimagined Survey 2024/2025, "
         "US AI Pulse Survey, and press releases failed to confirm the figure. "
-        "Per Logan's rule *'if we can't verify, we don't include it'*, the anchor "
+        "Per the project's verification policy *'if we can't verify, we don't include it'*, the anchor "
         "is removed entirely from v4.2. `training_spend_ppt` remains as a "
         "decorative slider per Option D."
     )

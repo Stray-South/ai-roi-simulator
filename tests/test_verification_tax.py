@@ -64,7 +64,7 @@ def test_apply_verification_tax_is_linear() -> None:
 # ---------------------------------------------------------------------------
 
 def test_help_desk_deflection_is_taxed() -> None:
-    """help_desk gross = pl_emp × tickets × deflection × cost_delta.
+    """help_desk gross = employees × tickets × deflection × cost_delta.
     Taxed value = gross × 0.63. Reconstruct gross and assert ratio."""
     inp = PeopleInputs()
     gross = (
